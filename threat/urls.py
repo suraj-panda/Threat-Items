@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import url
 from firstPage import views
+from django.conf import settings
 
-from django.views.static import static
+#from django.views.static import static
 from django.views.static import serve
 
 urlpatterns = [
@@ -31,10 +32,10 @@ urlpatterns = [
     url(r'^basic/(?P<path>.*)$', serve, {'document_root': settings.BASIC_ROOT}),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
-    url(r'^results/(?P<path>.*)$', serve, {'document_root': settings.RESULTS_ROOT}),
+    url(r'^results/(?P<path>.*)$', serve, {'document_root': settings.RESULT_ROOT}),
     url(r'^merge/(?P<path>.*)$', serve, {'document_root': settings.MERGE_ROOT}),
 ]
-urlpatterns=urlpatterns+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns=urlpatterns+static(settings.BASIC_URL, document_root=settings.BASIC_ROOT)
-urlpatterns=urlpatterns+static(settings.RESULTS_URL, document_root=settings.RESULTS_ROOT)
-urlpatterns=urlpatterns+static(settings.MERGE_URL, document_root=settings.MERGE_ROOT)
+# urlpatterns=urlpatterns+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns=urlpatterns+static(settings.BASIC_URL, document_root=settings.BASIC_ROOT)
+# urlpatterns=urlpatterns+static(settings.RESULT_URL, document_root=settings.RESULT_ROOT)
+# urlpatterns=urlpatterns+static(settings.MERGE_URL, document_root=settings.MERGE_ROOT)
